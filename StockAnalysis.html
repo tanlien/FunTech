@@ -1,0 +1,499 @@
+<html>
+
+<head>
+
+<title>Analysis of Company</title>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: green;
+  color: white;
+}
+td.subheader {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  text-align: left;
+  background-color: lightblue;
+  color: black;
+}
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+tr:hover {
+  background-color: #ddd;
+}
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+div.analysis {
+  display: block;
+}
+
+
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+</style>
+
+<script type="text/javascript">
+
+function ReplaceContentInContainer(id,symbol) {
+	var container = document.getElementById(id);
+	var uppersymbol = symbol.toUpperCase();
+	container.innerHTML = uppersymbol;
+	document.getElementById('analysis').style.display = "block";
+	
+	document.forms['myForm']['symbol'].value = symbol;
+	// window.open('scoreboard.html?symbol=' + uppersymbol, uppersymbol ,'resizable,height=600,width=1200');
+}
+
+
+function cLink(myid) {
+	var sym = document.forms["myForm"]["symbol"].value;
+    var link = document.getElementById( myid );
+	var str = '';
+	var myref = '';
+	if ( sym === "" ) { 
+		alert("Please enter company symbol!");
+	} else {
+		myref = hreflookup (myid);
+		str = myref.replace ( 'AAPL', sym.toUpperCase() );
+		link.setAttribute('href', str );	
+	}
+    return false;
+}
+
+function hreflookup ( myid ) {
+	var hrefs = {
+		c1: 'https://finviz.com/quote.ashx?t=AAPL',
+		c2:	'https://stockcharts.com/h-sc/ui?s=AAPL&overType_2=BB&overArgs_2=20,2&indType_2=STOFULL&indArgs_2=4,3,3&chartSize=Landscape',
+		c3: 'https://www.reuters.com/finance/stocks/chart/AAPL',
+		c4:	'https://snapshot.fidelity.com/fidresearch/snapshot/landing.jhtml#/research?symbol=AAPL&appCode=',
+
+		f1:	'https://www.gurufocus.com/term/zscore/AAPL/Altman-Z-Score',
+		f2:	'https://www.gurufocus.com/term/mscore/AAPL/Beneish-M-Score',
+		f3:	'https://www.gurufocus.com/term/fscore/AAPL/Piotroski-F-Score',
+		f4:	'http://financials.morningstar.com/income-statement/is.html?t=AAPL&region=usa&culture=en-US',
+		f5:	'https://www.marketwatch.com/investing/stock/AAPL/financials#expandAllRatios',
+		f6:	'http://financials.morningstar.com/balance-sheet/bs.html?t=AAPL&region=usa&culture=en-US',
+		f7:	'https://www.marketwatch.com/investing/stock/AAPL/financials/balance-sheet',
+		f8:'http://financials.morningstar.com/cash-flow/cf.html?t=AAPL&region=usa&culture=en-US',
+		f9:'https://www.marketwatch.com/investing/stock/AAPL/financials/cash-flow',
+		f10:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#FINANCIAL STRENGTH',
+		f11:'https://csimarket.com/stocks/AAPL-Financial-Strength-Comparisons.html',
+		f12:'https://www.gurufocus.com/term/Total_Debt_Per_Share/AAPL/Total-Debt-per-Share',
+		f13:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#FINANCIAL STRENGTH',
+		f14:'https://csimarket.com/stocks/AAPL-Financial-Strength-Comparisons.html',
+		f15:'https://www.gurufocus.com/term/wacc/AAPL/WACC-Percentage',
+	
+
+		
+		p1:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#PROFITABILITY RATIOS',
+		p2:'https://csimarket.com/stocks/Profitability.php?code=AAPL',
+		p3:'https://www.gurufocus.com/term/grossmargin/AAPL/Gross-Margin-Percentage#chart_core_main',
+		p4:'https://www.gurufocus.com/term/netmargin/AAPL/Net-Margin-Percentage',
+
+		
+		e1:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#MANAGEMENT EFFECTIVENESS',
+		e2:'https://csimarket.com/stocks/AAPL-Management-Effectiveness-Comparisons.html',
+		e3:'https://www.gurufocus.com/term/ROE/AAPL/ROE-Percentage',
+		e4:'http://financials.morningstar.com/ratios/r.html?t=AAPL&region=usa&culture=en-US',
+		e5:'https://www.gurufocus.com/term/ROIC/AAPL/ROIC',
+		e6:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#EFFECTIVENESS',
+		e7:'https://csimarket.com/stocks/AAPL-Efficiency-Comparisons.html',
+		
+		
+		v1:'http://financials.morningstar.com/valuation/price-ratio.html?t=AAPL&region=usa&culture=en-US#currentValuationTable',
+		v2:'https://csimarket.com/stocks/AAPL-Valuation-Comparisons.html',
+		v3:'https://www.gurufocus.com/term/pettm/AAPL/PE-Ratio',
+		v4:'https://www.gurufocus.com/term/ps/AAPL/PS-Ratio',
+		
+		
+		
+		
+		d1:'https://finviz.com/quote.ashx?t=AAPL',
+		d2:'https://www.gurufocus.com/term/per+share+eps/AAPL/Earnings-per-Share-(Diluted)',
+		d3:'https://www.gurufocus.com/term/Dividends+Per+Share/AAPL/Dividends-per-Share',
+		d4:'https://www.gurufocus.com/term/shares_basic/AAPL/Shares-Outstanding-(Basic-Average)',
+		d5:'https://www.gurufocus.com/term/CashAndCashEquivalents/AAPL/Cash-And-Cash-Equivalents',
+		d6:'https://www.gurufocus.com/term/Retained+Earnings/AAPL/Retained-Earnings',
+		d7:'https://www.gurufocus.com/term/Short-Term+Debt/AAPL/Current-Portion-of-Long-Term-Debt',
+		d8:'https://www.gurufocus.com/term/Long-Term+Debt/AAPL/Long-Term-Debt-&-Capital-Lease-Obligation',
+		d9:'https://www.nasdaq.com/symbol/AAPL/dividend-history',
+		d10:'https://www.reuters.com/finance/stocks/chart/AAPL',
+		
+		r1:'https://www.sec.gov/cgi-bin/browse-edgar?CIK=AAPL&owner=exclude&action=getcompany&Find=Search',
+		r2:'https://www.nasdaq.com/earnings/report/AAPL',
+		r3:'https://seekingalpha.com/symbol/AAPL/earnings',
+		r4:'https://www.earningswhispers.com/epsdetails/AAPL',
+		r5:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#CONSENSUS ESTIMATES',
+		r6:'https://finance.yahoo.com/quote/AAPL/analysis',
+		r7:'https://csimarket.com/stocks/at_glance.php?code=AAPL',
+		r8:'https://csimarket.com/stocks/eco.php?code=AAPL',
+		r9:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#INSTITUTIONAL HOLDERS'
+	};
+	
+	return hrefs[myid];
+}
+
+</script>
+
+
+</head>
+
+<body>
+<form action="#" name="myForm">
+
+<table>
+<tr><td>Symbol : <input type="text" name="symbol" value='AAPL' > <input type="button" onclick="ReplaceContentInContainer('companysymbol', document.forms['myForm']['symbol'].value) " value="Go">
+<div class="dropdown">
+  <button class="dropbtn">Watchlist</button>
+  <div class="dropdown-content">
+    <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'AXTI') " >AXTI</a>
+	
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'FB') " >FB</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'FFIV') " >FFIV</a>
+
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'GOOG') " >GOOG</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'LB') " >LB</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'LRCX') " >LRCX</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'PSX') " >PSX</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'SKX') " >SKX</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'FIZZ') " >FIZZ</a>
+
+
+  </div>
+</div>
+</td></tr>
+</table>
+<br />
+
+<div class='analysis' id='analysis'>
+
+
+<table>
+
+<tr><th colspan='2'>Analysis for <div id="companysymbol"> </div> </th></tr>
+
+<tr><td><a href="/" id="c1" onclick="cLink(this.id);" target="finviz" >Overall Fundamentals (FinViz)</a></td><td>
+<textarea name="c1" rows="10" cols="100">
+Financial Health:
+Liquidity:
+Leverage:
+Profitability:
+Valuation:
+Growth:
+Market Cap:
+Dividend:
+</textarea>
+</td></tr>
+<tr><td class='subheader' colspan='2'><center>Technical Analysis Valuation</center></td></tr>
+<tr><td><a href="/" id="c2" onclick="cLink(this.id );" target="stockchart">Technical Chart</a></td><td>
+RSI
+<input type="radio" name="rsi1" value="1"><font color='red'>Overbought</font>
+<input type="radio" name="rsi1" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="rsi1" value="-1"><font color='green'>Oversold</font>
+<br>
+BB
+<input type="radio" name="bb1" value="1"><font color='red'>Upperband</font>
+<input type="radio" name="bb1" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="bb1" value="-1"><font color='green'>Lowerband</font>
+<br>
+MACD
+<input type="radio" name="macd1" value="1"><font color='red'>Bearish Divergence</font>  <!-- MACD is going down while Price action is going up -->
+<input type="radio" name="macd1" value="0"><font color='blue'>Neutral</font>  <!-- MACD and Price are in sync confirming momentum -->
+<input type="radio" name="macd1" value="-1"><font color='green'>Bullish Divergence</font> <!-- MACD is going up and Price action is going down -->
+<br>
+Stochastics
+<input type="radio" name="stoch1" value="1"><font color='red'>Overbought</font>
+<input type="radio" name="stoch1" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="stoch1" value="-1"><font color='green'>Oversold</font>
+</td></tr>
+<tr><td><a href="/" id="c3" onclick="cLink(this.id);" target="reuters" >Intraday Chart</a></td><td>
+RSI
+<input type="radio" name="rsi2" value="1"><font color='red'>Overbought</font>
+<input type="radio" name="rsi2" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="rsi2" value="-1"><font color='green'>Oversold</font>
+<input type="text" name="rsi2" size=100>
+</td></tr>
+<tr><td><a href="/" id="c4" onclick="cLink(this.id );" target="fidelity">Fideltiy</a></td><td>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+
+</table>
+
+<br />
+
+<table>
+<tr><th colspan='2'> Financial Health</th></tr>
+<tr><td class='subheader' colspan='2'><center>Financial Test</center></td></tr>
+<tr><td><a href="/" id="f1" onclick="cLink(this.id );" target="guru">Altman-Z-Score Stress Test</a></td><td>
+<input type="radio" name="f1" value="1"><font color='green'>Good</font>
+<input type="radio" name="f1" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="f1" value="-1"><font color='red'>Poor</font>
+</td></tr>
+
+<tr><td><a href="/" id="f2" onclick="cLink(this.id );" target="guru">Beneish-M-Score Earnings Manipulator</a></td><td>
+<input type="radio" name="f2" value="2"><font color='green'>No</font>
+<input type="radio" name="f2" value="-2"><font color='red'>Yes</font>
+</td></tr>
+
+<tr><td><a href="/" id="f3" onclick="cLink(this.id );" target="guru">Piotroski-F-Score Financial situation</a></td><td>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+<tr><td class='subheader' colspan='2'><center>Financial Statements</center></td></tr>
+<tr><td><a href="/" id="f4" onclick="cLink(this.id );" target="ms"><font color='blue'>Income Statement (MS)</font></a>&nbsp
+<a href="/" id="f5" onclick="cLink(this.id );" target="mw"><font color='green'>Income Statement (MW)</font></a></td><td>
+<input type="radio" name="f45" value="1"><font color='green'>Good</font>
+<input type="radio" name="f45" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="f45" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+<tr><td><a href="/" id="f6" onclick="cLink(this.id );" target="ms"><font color='blue'>Balance Sheet (MS)</font></a>&nbsp
+<a href="/" id="f7" onclick="cLink(this.id );" target="mw"><font color='green'>Balance Sheet (MW)</font></a></td><td>
+<input type="radio" name="f67" value="1"><font color='green'>Good</font>
+<input type="radio" name="f67" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="f67" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+
+<tr><td><a href="/" id="f8" onclick="cLink(this.id);" target="ms"><font color='blue'>Cash Flow (MS)</font></a>&nbsp 
+<a href="/" id="f9" onclick="cLink(this.id );" target="mw"><font color='green'>Cash Flow (MW)</font></a></td><td>
+<input type="radio" name="f89" value="1"><font color='green'>Good</font>
+<input type="radio" name="f89" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="f89" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+
+
+<tr><td class='subheader' colspan='2'><center>Liquidity</center></td></tr>
+
+<tr><td><a href="/" id="f10" onclick="cLink(this.id );" target="reuters"><font color='blue'>Current Ratio vs Industry (Reuters)</font></a>&nbsp
+<a href="/" id="f11" onclick="cLink(this.id );" target="csi"><font color='green'>Current Ratio vs Industry (CSI)</font></a></td><td>
+<input type="radio" name="f1011" value="1"><font color='green'>Good</font>
+<input type="radio" name="f1011" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="f1011" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+
+<tr><td class='subheader' colspan='2'><center>Leverage/Solvency</center></td></tr>
+<tr><td><a href="/" id="f12" onclick="cLink(this.id);" target="guru">Total Debt per share</a></td><td>
+<input type="radio" name="f12" value="0">Yes
+<input type="radio" name="f12" value="0">No
+<input type="text" name="aaa" size=100>
+</td></tr>
+<tr><td><a href="/" id="f13" onclick="cLink(this.id );" target="reuters" ><font color='blue'>Debt/Equity vs Industry (Reuters)</font></a>&nbsp
+<a href="/" id="f14" onclick="cLink(this.id );" target="csi"><font color='green'>Debt/Equity vs Industry (CSI)</font></a></td><td>
+<input type="radio" name="f1314" value="1"><font color='green'>Good</font>
+<input type="radio" name="f1314" value="0"><font color='blue'>N/A</font>
+<input type="radio" name="f1314" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+<tr><td><a href="/" id="f15" onclick="cLink(this.id );" target="guru" >WACC Capital Structure (Guru)</a></td><td>
+<input type="text" name="f15" size=100 value="Weight of Capital:  Cost of Capital: " >
+</td></tr>
+
+</table>
+<br />
+
+<table>
+<tr><th colspan='2'>Profitability</th></tr>
+<tr><td class='subheader' colspan='2'><center>Margins (Industry)</center></td></tr>
+<tr><td><a href="/" id="p1" onclick="cLink(this.id );" target="reuters"><font color='blue'>Margins vs Industry (Reuters)</font></a>&nbsp
+<a href="/" id="p2" onclick="cLink(this.id );" target="csi"><font color='green'>Margins vs Industry (CSI)</font></a>
+</td><td>
+<input type="radio" name="p12" value="1"><font color='green'>Good</font>
+<input type="radio" name="p12" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="p12" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100 value="Gross:    Operation:    Profit:    ">
+</td></tr>
+<tr><td class='subheader' colspan='2'><center>Margins (Competitive Comparison)</center></td></tr>
+<tr><td><a href="/" id="p3" onclick="cLink(this.id );" target="guru">Gross Margin vs Competitors (Guru)</a></td><td>
+<input type="radio" name="p3" value="1"><font color='green'>Good</font>
+<input type="radio" name="p3" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="p3" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+<tr><td><a href="/" id="p4" onclick="cLink(this.id );" target="guru">Profit Margin vs Competitors (Guru)</a></td><td>
+<input type="radio" name="p4" value="1"><font color='green'>Good</font>
+<input type="radio" name="p4" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="p4" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+</table>
+<br />
+
+<table>
+<tr><th colspan='2'>Efficiency</th></tr>
+<tr><td class='subheader' colspan='2'><center>Management Efficiency</center></td></tr>
+<tr><td><a href="/" id="e1" onclick="cLink(this.id );" target="reuters"><font color='blue'>ROE vs Industry (Reuters)</font></a>&nbsp
+<a href="/" id="e2" onclick="cLink(this.id );" target="csi"><font color='green'>ROE vs Industry (CSI)</font></a></td><td>
+<input type="radio" name="e12" value="1"><font color='green'>Good</font>
+<input type="radio" name="e12" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="e12" value="-1"><font color='red'>Poor</font>
+<input type="text" name="e12" size=100 value="ROE:    ROA:    ROI:    ">
+</td></tr>
+<tr><td><a href="/" id="e3" onclick="cLink(this.id );" target="guru"><font color='blue'>ROE vs Competitors (Guru)</font></a></td><td>
+<input type="radio" name="e3" value="1"><font color='green'>Good</font>
+<input type="radio" name="e3" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="e3" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100 value="ROE:    ROA:    ROI:    ">
+</td></tr>
+<tr><td><a href="/" id="e4" onclick="cLink(this.id );" target="ms">ROE Growth (MS Key Ratio)</a></td><td>
+<input type="radio" name="e4" value="1"><font color='green'>Good</font>
+<input type="radio" name="e4" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="e4" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+<tr><td><a href="/" id="e5" onclick="cLink(this.id );" target="guru" >ROIC vs WACC (Guru ROIC)</a></td><td>
+<input type="radio" name="e5" value="1"><font color='green'>Good</font>
+<input type="radio" name="e5" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="e5" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+<tr><td class='subheader' colspan='2'><center>Resource Efficiency</center></td></tr>
+<tr><td><a href="/" id="e6" onclick="cLink(this.id );" target="reuters"><font color='blue'>Asset Turnover vs Industry (Reuters)</font></a>&nbsp
+<a href="/" id="e7" onclick="cLink(this.id );" target="csi"><font color='green'>Asset Turnover vs Industry (CSI)</font></a></td><td>
+<input type="radio" name="e67" value="1"><font color='green'>Good</font>
+<input type="radio" name="e67" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="e67" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100 value="Asset Turnover:    Inventory Turnover:    Income per employee:    ">
+</td></tr>
+<!-- Inventory Turnover = Sales / Average Inventory for the time period -->
+<!-- Low turnover implies weak sales and possibly excess inventory, while a high ratio implies either strong sales or insufficient inventory -->
+</td></tr>
+</table>
+
+<br />
+
+
+<table>
+<tr><th colspan='2'>Valuation</th></tr>
+<tr><td class='subheader' colspan='2'><center>Valuation (Industry)</center></td></tr>
+<tr><td><a href="/" id="v1" onclick="cLink(this.id);" target="ms"><font color='blue'>Valuation vs Industry (MS)</font></a>&nbsp
+<a href="/" id="v2" onclick="cLink(this.id );" target="csi"><font color='green'>Valuation vs Industry (CSI)</font></a></td><td>
+<input type="radio" name="v12" value="1"><font color='green'>Good</font>
+<input type="radio" name="v12" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="v12" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100 value="P/E:  P/S:  P/B:  P/C:  ">
+</td></tr>
+
+
+
+<tr><td class='subheader' colspan='2'><center>Valuation (Competitors)</center></td></tr>
+<tr><td><a href="/" id="v3" onclick="cLink(this.id );" target="guru">P/E vs Competitors (Guru P/E)</a></td><td>
+<input type="radio" name="v3" value="1"><font color='green'>Good</font>
+<input type="radio" name="v3" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="v3" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+<tr><td><a href="/" id="v4" onclick="cLink(this.id );" target="guru">P/S vs Competitors (Guru P/S)</a></td><td>
+<input type="radio" name="v4" value="1"><font color='green'>Good</font>
+<input type="radio" name="v4" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="v4" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+
+
+
+</table>
+
+<br />
+<table>
+<tr><th colspan='2'>Resources</th></tr>
+<tr><td><a href="/" id="r1" onclick="cLink(this.id );" target="others">SEC Filings</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href="/" id="r7" onclick="cLink(this.id );" target="others">Business Segments</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href="/" id="r8" onclick="cLink(this.id );" target="others">Economic Indicators</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href="/" id="r9" onclick="cLink(this.id);" target="others">Institutional Holders</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href="/" id="r2" onclick="cLink(this.id );" target="others">Earnings Surprise</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href="/" id="r3" onclick="cLink(this.id );" target="others">Earning Revisions</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href="/" id="r4" onclick="cLink(this.id );" target="others">Expectations and Guidances</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href="/" id="r6" onclick="cLink(this.id );" target="yahoo">Yahoo Estimates</a></td><td><input type="text" name="aaa" size=100></td></tr>
+
+<tr><td class='subheader' colspan='2'><center>Market Charts</center></td></tr>
+<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$INDU' target="indexchart">Dow Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$SPX' target="indexchart">S&P Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$COMPQ' target="indexchart">NASDAQ Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href='https://finance.yahoo.com/' target="indexchart">US Future and Stock Markets</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td class='subheader' colspan='2'><center>Search Ideas</center></td></tr>
+<tr><td>Search Multiple bottom w/ Fundamentals</td><td><a href='https://finviz.com/screener.ashx?v=111&f=fa_curratio_o1,fa_debteq_u0.8,fa_netmargin_o5,fa_pe_u50,fa_roe_o5,ta_pattern_multiplebottom&ft=2' target="finviz">Search Bottom</a></td></tr>
+<tr><td>Search RSI Oversold w/ Fundamentals</td><td><a href='https://finviz.com/screener.ashx?v=111&f=fa_curratio_o1,fa_debteq_u0.8,fa_netmargin_o5,fa_pe_u50,fa_roe_o5,ta_rsi_os20&ft=3' target="finviz">Search RSI Oversold</a></td></tr>
+<tr><td>Search Morningstar Aggressive Growth</td><td><a href='http://screen.morningstar.com/StockSelector.html' target="ms">MorningStar Search</a></td></tr>
+</table>
+<br />
+
+<table>
+<tr><th colspan='2'>Dividends</th></tr>
+<tr><td>Payout Ratio</td> <td><a href="/" id="d1" onclick="cLink(this.id );" target="finviz" >FinViz</a></td></tr>
+<tr><td>Earnings-per-Share</td> <td><a href="/" id="d2" onclick="cLink(this.id );" target="guru" >Guru EPS</a> </td></tr>
+<tr><td>Dividends-per-Share</td> <td><a href="/" id="d3" onclick="cLink(this.id);" target="guru" >Guru Dividends-per-Share</a> </td></tr>
+<tr><td>Average outstanding shares</td><td><a href="/" id="d4" onclick="cLink(this.id );" target="guru">Guru Shares Outstanding</a></td></tr>
+<tr><td>Total Cash (MRQ)</td><td><a href="/" id="d5" onclick="cLink(this.id );" target="guru">Guru Cash </a></td></tr>
+<tr><td>Retained Earnings (MRQ)</td><td><a href="/" id="d6" onclick="cLink(this.id );" target="guru">Guru Retained Earnings </a></td></tr>
+<tr><td>Short-Term Debt (MRQ)</td><td><a href="/" id="d7" onclick="cLink(this.id );" target="guru">Guru Short-Term Debt </a></td></tr>
+<tr><td>Long-Term Debt (MRQ)</td><td><a href="/" id="d8" onclick="cLink(this.id);" target="guru">Guru Long-Term Debt </a></td></tr>
+<tr><td>Dividend History</td> <td><a href="/" id="d9" onclick="cLink(this.id);" target="nasdaq" >Nasdaq Dividend</a> </td></tr>
+<tr><td>Dividend History in charts</td> <td><a href="/" id="d10" onclick="cLink(this.id);" target="reuters" >Reuters Dividend</a> </td></tr>
+
+</table>
+<br />
+
+
+</div>
+
+</form>
+
+</body>
+</html>
+
