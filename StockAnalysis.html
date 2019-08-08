@@ -1,3 +1,4 @@
+
 <html>
 
 <head>
@@ -42,8 +43,8 @@ div.analysis {
 .dropbtn {
   background-color: #4CAF50;
   color: white;
-  padding: 16px;
-  font-size: 16px;
+  padding: 8px;
+  font-size: 8px;
   border: none;
 }
 
@@ -184,28 +185,51 @@ function hreflookup ( myid ) {
 </head>
 
 <body>
+
+
 <form action="#" name="myForm">
 
 <table>
 <tr><td>Symbol : <input type="text" name="symbol" value='AAPL' > <input type="button" onclick="ReplaceContentInContainer('companysymbol', document.forms['myForm']['symbol'].value) " value="Go">
+
+
 <div class="dropdown">
-  <button class="dropbtn">Watchlist</button>
+  <button class="dropbtn">CAN SLIM</button>
   <div class="dropdown-content">
-    <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'AXTI') " >AXTI</a>
+  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'FB') " >FB</a>
+  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'AMZN') " >AMZN</a>
+  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'NFLX') " >NFLX</a>
+  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'GOOG') " >GOOG</a>
+
+  
+    <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'NMIH') " >NMIH</a>
 	
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'FB') " >FB</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'WUBA') " >WUBA</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'BABA') " >BABA</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'EPAM') " >EPAM</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'TAL') " >TAL</a>
+	
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'BZUN') " >BZUN</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'VRTX') " >VRTX</a>
+
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'PAYS') " >PAYS</a>
 	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'FFIV') " >FFIV</a>
-
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'GOOG') " >GOOG</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'LB') " >LB</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'LRCX') " >LRCX</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'PSX') " >PSX</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'SKX') " >SKX</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'FIZZ') " >FIZZ</a>
-
-
+	
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'VEEV') " >VEEV</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'HEI') " >HEI</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'CDNS') " >CDNS</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'TRUP') " >TRUP</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'CSGP') " >CSGP</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'ULTA') " >ULTA</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'NSP') " >NSP</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'CRMT') " >CRMT</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'CDW') " >CDW</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'PYPL') " >PYPL</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'MLR') " >MLR</a>
+	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'TMO') " >TMO</a>
   </div>
 </div>
+
 </td></tr>
 </table>
 <br />
@@ -218,7 +242,7 @@ function hreflookup ( myid ) {
 <tr><th colspan='2'>Analysis for <div id="companysymbol"> </div> </th></tr>
 
 <tr><td><a href="/" id="c1" onclick="cLink(this.id);" target="finviz" >Overall Fundamentals (FinViz)</a></td><td>
-<textarea name="c1" rows="10" cols="100">
+<!-- textarea name="c1" rows="10" cols="100">
 Financial Health:
 Liquidity:
 Leverage:
@@ -227,7 +251,11 @@ Valuation:
 Growth:
 Market Cap:
 Dividend:
-</textarea>
+</textarea  -->
+<input type="text" name="aaa" size=100>
+</td></tr>
+<tr><td><a href="/" id="r7" onclick="cLink(this.id );" target="others">Company Profile & Business Segments</a></td><td>
+<input type="text" name="aaa" size=100>
 </td></tr>
 <tr><td class='subheader' colspan='2'><center>Technical Analysis Valuation</center></td></tr>
 <tr><td><a href="/" id="c2" onclick="cLink(this.id );" target="stockchart">Technical Chart</a></td><td>
@@ -252,14 +280,7 @@ Stochastics
 <input type="radio" name="stoch1" value="-1"><font color='green'>Oversold</font>
 </td></tr>
 <tr><td><a href="/" id="c3" onclick="cLink(this.id);" target="reuters" >Intraday Chart</a></td><td>
-RSI
-<input type="radio" name="rsi2" value="1"><font color='red'>Overbought</font>
-<input type="radio" name="rsi2" value="0"><font color='blue'>Neutral</font>
-<input type="radio" name="rsi2" value="-1"><font color='green'>Oversold</font>
 <input type="text" name="rsi2" size=100>
-</td></tr>
-<tr><td><a href="/" id="c4" onclick="cLink(this.id );" target="fidelity">Fideltiy</a></td><td>
-<input type="text" name="aaa" size=100>
 </td></tr>
 
 
@@ -453,7 +474,7 @@ RSI
 <table>
 <tr><th colspan='2'>Resources</th></tr>
 <tr><td><a href="/" id="r1" onclick="cLink(this.id );" target="others">SEC Filings</a></td><td><input type="text" name="aaa" size=100></td></tr>
-<tr><td><a href="/" id="r7" onclick="cLink(this.id );" target="others">Business Segments</a></td><td><input type="text" name="aaa" size=100></td></tr>
+
 <tr><td><a href="/" id="r8" onclick="cLink(this.id );" target="others">Economic Indicators</a></td><td><input type="text" name="aaa" size=100></td></tr>
 <tr><td><a href="/" id="r9" onclick="cLink(this.id);" target="others">Institutional Holders</a></td><td><input type="text" name="aaa" size=100></td></tr>
 <tr><td><a href="/" id="r2" onclick="cLink(this.id );" target="others">Earnings Surprise</a></td><td><input type="text" name="aaa" size=100></td></tr>
@@ -469,12 +490,16 @@ RSI
 <tr><td class='subheader' colspan='2'><center>Search Ideas</center></td></tr>
 <tr><td>Search Multiple bottom w/ Fundamentals</td><td><a href='https://finviz.com/screener.ashx?v=111&f=fa_curratio_o1,fa_debteq_u0.8,fa_netmargin_o5,fa_pe_u50,fa_roe_o5,ta_pattern_multiplebottom&ft=2' target="finviz">Search Bottom</a></td></tr>
 <tr><td>Search RSI Oversold w/ Fundamentals</td><td><a href='https://finviz.com/screener.ashx?v=111&f=fa_curratio_o1,fa_debteq_u0.8,fa_netmargin_o5,fa_pe_u50,fa_roe_o5,ta_rsi_os20&ft=3' target="finviz">Search RSI Oversold</a></td></tr>
+<tr><td>Search CANSLIM</td><td><a href='https://elite.finviz.com/screener.ashx?v=121&f=fa_eps5years_o20,fa_epsqoq_o20,fa_epsyoy_o20,fa_epsyoy1_o20,fa_netmargin_pos,fa_roe_o10,fa_sales5years_o20,fa_salesqoq_o20&ft=2&o=-marketcap' target="finviz">Search CANSILM</a></td></tr>
 <tr><td>Search Morningstar Aggressive Growth</td><td><a href='http://screen.morningstar.com/StockSelector.html' target="ms">MorningStar Search</a></td></tr>
 </table>
 <br />
 
 <table>
 <tr><th colspan='2'>Dividends</th></tr>
+<tr><td>Earnings-per-Share</td> <td><a href="/" id="d2" onclick="cLink(this.id );" target="guru" >Guru EPS</a> </td></tr>
+<tr><td>Dividends-per-Share</td> <td><a href="/" id="d3" onclick="cLink(this.id);" target="guru" >Guru Dividends-per-Share</a> </td></tr>
+<tr><td>Average outstanding shares</td><td><a href="/" id="d4" onclick="cLink(this.id );" target="guru">Guru Shares Outstanding</a></td></tr>
 <tr><td>Total Cash (MRQ)</td><td><a href="/" id="d5" onclick="cLink(this.id );" target="guru">Guru Cash </a></td></tr>
 <tr><td>Retained Earnings (MRQ)</td><td><a href="/" id="d6" onclick="cLink(this.id );" target="guru">Guru Retained Earnings </a></td></tr>
 <tr><td>Short-Term Debt (MRQ)</td><td><a href="/" id="d7" onclick="cLink(this.id );" target="guru">Guru Short-Term Debt </a></td></tr>
