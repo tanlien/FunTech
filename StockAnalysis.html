@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -110,7 +109,6 @@ function hreflookup ( myid ) {
 	var hrefs = {
 		c1: 'https://finviz.com/quote.ashx?t=AAPL',
 		c2:	'https://stockcharts.com/h-sc/ui?s=AAPL&overType_2=BB&overArgs_2=20,2&indType_2=STOFULL&indArgs_2=4,3,3&chartSize=Landscape',
-		c3: 'https://www.reuters.com/finance/stocks/chart/AAPL',
 		c4:	'https://snapshot.fidelity.com/fidresearch/snapshot/landing.jhtml#/research?symbol=AAPL&appCode=',
 
 		f1:	'https://www.gurufocus.com/term/zscore/AAPL/Altman-Z-Score',
@@ -150,6 +148,7 @@ function hreflookup ( myid ) {
 		v2:'https://csimarket.com/stocks/AAPL-Valuation-Comparisons.html',
 		v3:'https://www.gurufocus.com/term/pettm/AAPL/PE-Ratio',
 		v4:'https://www.gurufocus.com/term/ps/AAPL/PS-Ratio',
+		v5:'https://www.gurufocus.com/term/ev/AAPL/Enterprise-Value',
 		
 		
 		
@@ -173,7 +172,11 @@ function hreflookup ( myid ) {
 		r6:'https://finance.yahoo.com/quote/AAPL/analysis',
 		r7:'https://csimarket.com/stocks/at_glance.php?code=AAPL',
 		r8:'https://csimarket.com/stocks/eco.php?code=AAPL',
-		r9:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#INSTITUTIONAL HOLDERS'
+		r9:'https://www.insidermonkey.com/insider-trading/purchases/',
+		r10: 'https://www.insidermonkey.com/insider-trading/sales/',
+		r11: 'https://www.gurufocus.com/yield_curve.php',
+		r12: 'https://www.bls.gov/charts/employment-situation/civilian-unemployment-rate.htm',
+		r13: 'https://www.census.gov/housing/hvs/index.html'
 	};
 	
 	return hrefs[myid];
@@ -196,37 +199,12 @@ function hreflookup ( myid ) {
 <div class="dropdown">
   <button class="dropbtn">CAN SLIM</button>
   <div class="dropdown-content">
-  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'FB') " >FB</a>
+  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'ULTA') " >ULTA</a>
   <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'AMZN') " >AMZN</a>
-  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'NFLX') " >NFLX</a>
-  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'GOOG') " >GOOG</a>
+  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'NSP') " >NSP</a>
+  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'VEEV') " >VEEV</a>
 
-  
-    <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'NMIH') " >NMIH</a>
-	
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'WUBA') " >WUBA</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'BABA') " >BABA</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'EPAM') " >EPAM</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'TAL') " >TAL</a>
-	
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'BZUN') " >BZUN</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'VRTX') " >VRTX</a>
-
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'PAYS') " >PAYS</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'FFIV') " >FFIV</a>
-	
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'VEEV') " >VEEV</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'HEI') " >HEI</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'CDNS') " >CDNS</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'TRUP') " >TRUP</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'CSGP') " >CSGP</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'ULTA') " >ULTA</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'NSP') " >NSP</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'CRMT') " >CRMT</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'CDW') " >CDW</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'PYPL') " >PYPL</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'MLR') " >MLR</a>
-	<a href="#" onclick="ReplaceContentInContainer('companysymbol', 'TMO') " >TMO</a>
+ 
   </div>
 </div>
 
@@ -242,46 +220,27 @@ function hreflookup ( myid ) {
 <tr><th colspan='2'>Analysis for <div id="companysymbol"> </div> </th></tr>
 
 <tr><td><a href="/" id="c1" onclick="cLink(this.id);" target="finviz" >Overall Fundamentals (FinViz)</a></td><td>
-<!-- textarea name="c1" rows="10" cols="100">
-Financial Health:
-Liquidity:
-Leverage:
-Profitability:
-Valuation:
-Growth:
-Market Cap:
-Dividend:
-</textarea  -->
 <input type="text" name="aaa" size=100>
 </td></tr>
 <tr><td><a href="/" id="r7" onclick="cLink(this.id );" target="others">Company Profile & Business Segments</a></td><td>
 <input type="text" name="aaa" size=100>
 </td></tr>
-<tr><td class='subheader' colspan='2'><center>Technical Analysis Valuation</center></td></tr>
-<tr><td><a href="/" id="c2" onclick="cLink(this.id );" target="stockchart">Technical Chart</a></td><td>
-RSI
-<input type="radio" name="rsi1" value="1"><font color='red'>Overbought</font>
-<input type="radio" name="rsi1" value="0"><font color='blue'>Neutral</font>
-<input type="radio" name="rsi1" value="-1"><font color='green'>Oversold</font>
-<br>
-BB
-<input type="radio" name="bb1" value="1"><font color='red'>Upperband</font>
-<input type="radio" name="bb1" value="0"><font color='blue'>Neutral</font>
-<input type="radio" name="bb1" value="-1"><font color='green'>Lowerband</font>
-<br>
-MACD
-<input type="radio" name="macd1" value="1"><font color='red'>Bearish Divergence</font>  <!-- MACD is going down while Price action is going up -->
-<input type="radio" name="macd1" value="0"><font color='blue'>Neutral</font>  <!-- MACD and Price are in sync confirming momentum -->
-<input type="radio" name="macd1" value="-1"><font color='green'>Bullish Divergence</font> <!-- MACD is going up and Price action is going down -->
-<br>
-Stochastics
-<input type="radio" name="stoch1" value="1"><font color='red'>Overbought</font>
-<input type="radio" name="stoch1" value="0"><font color='blue'>Neutral</font>
-<input type="radio" name="stoch1" value="-1"><font color='green'>Oversold</font>
+<tr><td><a href="/" id="r9" onclick="cLink(this.id );" target="others">Insiders, Institution Holders, and Hedge Funds</a></td><td>
+<input type="text" name="aaa" size=100>
 </td></tr>
-<tr><td><a href="/" id="c3" onclick="cLink(this.id);" target="reuters" >Intraday Chart</a></td><td>
+
+<tr><td class='subheader' colspan='2'><center>Market Charts</center></td></tr>
+<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$INDU' target="indexchart">Dow Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$SPX' target="indexchart">S&P Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$COMPQ' target="indexchart">NASDAQ Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href='https://finance.yahoo.com/' target="indexchart">US Future and Stock Markets</a></td><td><input type="text" name="aaa" size=100></td></tr>
+
+<tr><td class='subheader' colspan='2'><center>Technical Analysis</center></td></tr>
+<tr><td><a href="/" id="c2" onclick="cLink(this.id );" target="stockchart">Chart with Volume</a></td><td>
+
 <input type="text" name="rsi2" size=100>
 </td></tr>
+
 
 
 </table>
@@ -336,8 +295,7 @@ Stochastics
 
 <tr><td class='subheader' colspan='2'><center>Liquidity</center></td></tr>
 
-<tr><td><a href="/" id="f10" onclick="cLink(this.id );" target="reuters"><font color='blue'>Current Ratio vs Industry (Reuters)</font></a>&nbsp
-<a href="/" id="f11" onclick="cLink(this.id );" target="csi"><font color='green'>Current Ratio vs Industry (CSI)</font></a></td><td>
+<tr><td><a href="/" id="f11" onclick="cLink(this.id );" target="csi"><font color='green'>Current Ratio vs Industry (CSI)</font></a></td><td>
 <input type="radio" name="f1011" value="1"><font color='green'>Good</font>
 <input type="radio" name="f1011" value="0"><font color='blue'>Neutral</font>
 <input type="radio" name="f1011" value="-1"><font color='red'>Poor</font>
@@ -351,8 +309,7 @@ Stochastics
 <input type="radio" name="f12" value="0">No
 <input type="text" name="aaa" size=100>
 </td></tr>
-<tr><td><a href="/" id="f13" onclick="cLink(this.id );" target="reuters" ><font color='blue'>Debt/Equity vs Industry (Reuters)</font></a>&nbsp
-<a href="/" id="f14" onclick="cLink(this.id );" target="csi"><font color='green'>Debt/Equity vs Industry (CSI)</font></a></td><td>
+<tr><td><a href="/" id="f14" onclick="cLink(this.id );" target="csi"><font color='green'>Debt/Equity vs Industry (CSI)</font></a></td><td>
 <input type="radio" name="f1314" value="1"><font color='green'>Good</font>
 <input type="radio" name="f1314" value="0"><font color='blue'>N/A</font>
 <input type="radio" name="f1314" value="-1"><font color='red'>Poor</font>
@@ -369,8 +326,7 @@ Stochastics
 <table>
 <tr><th colspan='2'>Profitability</th></tr>
 <tr><td class='subheader' colspan='2'><center>Margins (Industry)</center></td></tr>
-<tr><td><a href="/" id="p1" onclick="cLink(this.id );" target="reuters"><font color='blue'>Margins vs Industry (Reuters)</font></a>&nbsp
-<a href="/" id="p2" onclick="cLink(this.id );" target="csi"><font color='green'>Margins vs Industry (CSI)</font></a>
+<tr><td><a href="/" id="p2" onclick="cLink(this.id );" target="csi"><font color='green'>Margins vs Industry (CSI)</font></a>
 </td><td>
 <input type="radio" name="p12" value="1"><font color='green'>Good</font>
 <input type="radio" name="p12" value="0"><font color='blue'>Neutral</font>
@@ -396,8 +352,7 @@ Stochastics
 <table>
 <tr><th colspan='2'>Efficiency</th></tr>
 <tr><td class='subheader' colspan='2'><center>Management Efficiency</center></td></tr>
-<tr><td><a href="/" id="e1" onclick="cLink(this.id );" target="reuters"><font color='blue'>ROE vs Industry (Reuters)</font></a>&nbsp
-<a href="/" id="e2" onclick="cLink(this.id );" target="csi"><font color='green'>ROE vs Industry (CSI)</font></a></td><td>
+<tr><td><a href="/" id="e2" onclick="cLink(this.id );" target="csi"><font color='green'>ROE vs Industry (CSI)</font></a></td><td>
 <input type="radio" name="e12" value="1"><font color='green'>Good</font>
 <input type="radio" name="e12" value="0"><font color='blue'>Neutral</font>
 <input type="radio" name="e12" value="-1"><font color='red'>Poor</font>
@@ -423,8 +378,7 @@ Stochastics
 </td></tr>
 
 <tr><td class='subheader' colspan='2'><center>Resource Efficiency</center></td></tr>
-<tr><td><a href="/" id="e6" onclick="cLink(this.id );" target="reuters"><font color='blue'>Asset Turnover vs Industry (Reuters)</font></a>&nbsp
-<a href="/" id="e7" onclick="cLink(this.id );" target="csi"><font color='green'>Asset Turnover vs Industry (CSI)</font></a></td><td>
+<tr><td><a href="/" id="e7" onclick="cLink(this.id );" target="csi"><font color='green'>Asset Turnover vs Industry (CSI)</font></a></td><td>
 <input type="radio" name="e67" value="1"><font color='green'>Good</font>
 <input type="radio" name="e67" value="0"><font color='blue'>Neutral</font>
 <input type="radio" name="e67" value="-1"><font color='red'>Poor</font>
@@ -440,12 +394,19 @@ Stochastics
 
 <table>
 <tr><th colspan='2'>Valuation</th></tr>
+
+<tr><td><a href="/" id="v5" onclick="cLink(this.id );" target="guru"> Enterprise-Value </a></td><td>
+<input type="radio" name="v5" value="1"><font color='green'>Good</font>
+<input type="radio" name="v5" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="v5" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
 <tr><td class='subheader' colspan='2'><center>Valuation (Industry)</center></td></tr>
-<tr><td><a href="/" id="v1" onclick="cLink(this.id);" target="ms"><font color='blue'>Valuation vs Industry (MS)</font></a>&nbsp
-<a href="/" id="v2" onclick="cLink(this.id );" target="csi"><font color='green'>Valuation vs Industry (CSI)</font></a></td><td>
-<input type="radio" name="v12" value="1"><font color='green'>Good</font>
-<input type="radio" name="v12" value="0"><font color='blue'>Neutral</font>
-<input type="radio" name="v12" value="-1"><font color='red'>Poor</font>
+<tr><td><a href="/" id="v2" onclick="cLink(this.id );" target="csi"><font color='green'>Valuation vs Industry (CSI)</font></a></td><td>
+<input type="radio" name="v2" value="1"><font color='green'>Good</font>
+<input type="radio" name="v2" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="v2" value="-1"><font color='red'>Poor</font>
 <input type="text" name="aaa" size=100 value="P/E:  P/S:  P/B:  P/C:  ">
 </td></tr>
 
@@ -476,17 +437,19 @@ Stochastics
 <tr><td><a href="/" id="r1" onclick="cLink(this.id );" target="others">SEC Filings</a></td><td><input type="text" name="aaa" size=100></td></tr>
 
 <tr><td><a href="/" id="r8" onclick="cLink(this.id );" target="others">Economic Indicators</a></td><td><input type="text" name="aaa" size=100></td></tr>
-<tr><td><a href="/" id="r9" onclick="cLink(this.id);" target="others">Institutional Holders</a></td><td><input type="text" name="aaa" size=100></td></tr>
 <tr><td><a href="/" id="r2" onclick="cLink(this.id );" target="others">Earnings Surprise</a></td><td><input type="text" name="aaa" size=100></td></tr>
 <tr><td><a href="/" id="r3" onclick="cLink(this.id );" target="others">Earning Revisions</a></td><td><input type="text" name="aaa" size=100></td></tr>
 <tr><td><a href="/" id="r4" onclick="cLink(this.id );" target="others">Expectations and Guidances</a></td><td><input type="text" name="aaa" size=100></td></tr>
 <tr><td><a href="/" id="r6" onclick="cLink(this.id );" target="yahoo">Yahoo Estimates</a></td><td><input type="text" name="aaa" size=100></td></tr>
 
-<tr><td class='subheader' colspan='2'><center>Market Charts</center></td></tr>
-<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$INDU' target="indexchart">Dow Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
-<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$SPX' target="indexchart">S&P Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
-<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$COMPQ' target="indexchart">NASDAQ Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
-<tr><td><a href='https://finance.yahoo.com/' target="indexchart">US Future and Stock Markets</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td class='subheader' colspan='2'><center>Economic Indicators</center></td></tr>
+<tr><td><a href='https://www.aaii.com/sentimentsurvey' target="indexchart">Equity Market Sentiment</a></td><td><input type="text" name="aaa" size=100></td></tr>
+
+<tr><td><a href="https://www.gurufocus.com/yield_curve.php" target="others">Yield Curve</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href="https://www.bls.gov/charts/employment-situation/civilian-unemployment-rate.htm" target="others">Employment</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href="https://www.census.gov/housing/hvs/index.html" target="others">Housing Ownership and Vacancy Rate</a></td><td><input type="text" name="aaa" size=100></td></tr>
+
+
 <tr><td class='subheader' colspan='2'><center>Search Ideas</center></td></tr>
 <tr><td>Search Multiple bottom w/ Fundamentals</td><td><a href='https://finviz.com/screener.ashx?v=111&f=fa_curratio_o1,fa_debteq_u0.8,fa_netmargin_o5,fa_pe_u50,fa_roe_o5,ta_pattern_multiplebottom&ft=2' target="finviz">Search Bottom</a></td></tr>
 <tr><td>Search RSI Oversold w/ Fundamentals</td><td><a href='https://finviz.com/screener.ashx?v=111&f=fa_curratio_o1,fa_debteq_u0.8,fa_netmargin_o5,fa_pe_u50,fa_roe_o5,ta_rsi_os20&ft=3' target="finviz">Search RSI Oversold</a></td></tr>
@@ -505,7 +468,7 @@ Stochastics
 <tr><td>Short-Term Debt (MRQ)</td><td><a href="/" id="d7" onclick="cLink(this.id );" target="guru">Guru Short-Term Debt </a></td></tr>
 <tr><td>Long-Term Debt (MRQ)</td><td><a href="/" id="d8" onclick="cLink(this.id);" target="guru">Guru Long-Term Debt </a></td></tr>
 <tr><td>Dividend History</td> <td><a href="/" id="d9" onclick="cLink(this.id);" target="nasdaq" >Nasdaq Dividend</a> </td></tr>
-<tr><td>Dividend History in charts</td> <td><a href="/" id="d10" onclick="cLink(this.id);" target="reuters" >Reuters Dividend</a> </td></tr>
+
 
 </table>
 <br />
@@ -517,4 +480,6 @@ Stochastics
 
 </body>
 </html>
+
+
 
