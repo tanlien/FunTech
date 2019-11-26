@@ -149,7 +149,7 @@ function hreflookup ( myid ) {
 		v3:'https://www.gurufocus.com/term/pettm/AAPL/PE-Ratio',
 		v4:'https://www.gurufocus.com/term/ps/AAPL/PS-Ratio',
 		v5:'https://www.gurufocus.com/term/ev/AAPL/Enterprise-Value',
-		
+		v6:'https://www.gurufocus.com/term/lynchvalue/AAPL/Peter-Lynch-Fair-Value',
 		
 		
 		
@@ -217,7 +217,7 @@ function hreflookup ( myid ) {
 
 <table>
 
-<tr><th colspan='2'>Analysis for <div id="companysymbol"> </div> </th></tr>
+<tr><th colspan='2'>Analysis<br> <div id="companysymbol"> </div> </th></tr>
 
 <tr><td><a href="/" id="c1" onclick="cLink(this.id);" target="finviz" >Overall Fundamentals (FinViz)</a></td><td>
 <input type="text" name="aaa" size=100>
@@ -240,8 +240,6 @@ function hreflookup ( myid ) {
 
 <input type="text" name="rsi2" size=100>
 </td></tr>
-
-
 
 </table>
 
@@ -323,6 +321,51 @@ function hreflookup ( myid ) {
 </table>
 <br />
 
+
+<table>
+<tr><th colspan='2'>Valuation</th></tr>
+
+<tr><td><a href="/" id="v5" onclick="cLink(this.id );" target="guru"> Enterprise-Value </a></td><td>
+<input type="radio" name="v5" value="1"><font color='green'>Good</font>
+<input type="radio" name="v5" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="v5" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+<tr><td><a href="/" id="v6" onclick="cLink(this.id );" target="guru"> Peter Lynch Fair Value </a></td><td>
+<input type="radio" name="v6" value="1"><font color='green'>Good</font>
+<input type="radio" name="v6" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="v6" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+<tr><td class='subheader' colspan='2'><center>Valuation (Industry)</center></td></tr>
+<tr><td><a href="/" id="v2" onclick="cLink(this.id );" target="csi"><font color='green'>Valuation vs Industry (CSI)</font></a></td><td>
+<input type="radio" name="v2" value="1"><font color='green'>Good</font>
+<input type="radio" name="v2" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="v2" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100 value="P/E:  P/S:  P/B:  P/C:  ">
+</td></tr>
+
+
+
+<tr><td class='subheader' colspan='2'><center>Valuation (Competitors)</center></td></tr>
+<tr><td><a href="/" id="v3" onclick="cLink(this.id );" target="guru">P/E vs Competitors (Guru P/E)</a></td><td>
+<input type="radio" name="v3" value="1"><font color='green'>Good</font>
+<input type="radio" name="v3" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="v3" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+<tr><td><a href="/" id="v4" onclick="cLink(this.id );" target="guru">P/S vs Competitors (Guru P/S)</a></td><td>
+<input type="radio" name="v4" value="1"><font color='green'>Good</font>
+<input type="radio" name="v4" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="v4" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+</table>
+
+
 <table>
 <tr><th colspan='2'>Profitability</th></tr>
 <tr><td class='subheader' colspan='2'><center>Margins (Industry)</center></td></tr>
@@ -392,44 +435,7 @@ function hreflookup ( myid ) {
 <br />
 
 
-<table>
-<tr><th colspan='2'>Valuation</th></tr>
 
-<tr><td><a href="/" id="v5" onclick="cLink(this.id );" target="guru"> Enterprise-Value </a></td><td>
-<input type="radio" name="v5" value="1"><font color='green'>Good</font>
-<input type="radio" name="v5" value="0"><font color='blue'>Neutral</font>
-<input type="radio" name="v5" value="-1"><font color='red'>Poor</font>
-<input type="text" name="aaa" size=100>
-</td></tr>
-
-<tr><td class='subheader' colspan='2'><center>Valuation (Industry)</center></td></tr>
-<tr><td><a href="/" id="v2" onclick="cLink(this.id );" target="csi"><font color='green'>Valuation vs Industry (CSI)</font></a></td><td>
-<input type="radio" name="v2" value="1"><font color='green'>Good</font>
-<input type="radio" name="v2" value="0"><font color='blue'>Neutral</font>
-<input type="radio" name="v2" value="-1"><font color='red'>Poor</font>
-<input type="text" name="aaa" size=100 value="P/E:  P/S:  P/B:  P/C:  ">
-</td></tr>
-
-
-
-<tr><td class='subheader' colspan='2'><center>Valuation (Competitors)</center></td></tr>
-<tr><td><a href="/" id="v3" onclick="cLink(this.id );" target="guru">P/E vs Competitors (Guru P/E)</a></td><td>
-<input type="radio" name="v3" value="1"><font color='green'>Good</font>
-<input type="radio" name="v3" value="0"><font color='blue'>Neutral</font>
-<input type="radio" name="v3" value="-1"><font color='red'>Poor</font>
-<input type="text" name="aaa" size=100>
-</td></tr>
-<tr><td><a href="/" id="v4" onclick="cLink(this.id );" target="guru">P/S vs Competitors (Guru P/S)</a></td><td>
-<input type="radio" name="v4" value="1"><font color='green'>Good</font>
-<input type="radio" name="v4" value="0"><font color='blue'>Neutral</font>
-<input type="radio" name="v4" value="-1"><font color='red'>Poor</font>
-<input type="text" name="aaa" size=100>
-</td></tr>
-
-
-
-
-</table>
 
 <br />
 <table>
@@ -480,6 +486,5 @@ function hreflookup ( myid ) {
 
 </body>
 </html>
-
 
 
