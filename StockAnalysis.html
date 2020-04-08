@@ -80,106 +80,111 @@ div.analysis {
 <script type="text/javascript">
 
 function ReplaceContentInContainer(id,symbol) {
-	var container = document.getElementById(id);
-	var uppersymbol = symbol.toUpperCase();
-	container.innerHTML = uppersymbol;
-	document.getElementById('analysis').style.display = "block";
-	
-	document.forms['myForm']['symbol'].value = symbol;
-	// window.open('scoreboard.html?symbol=' + uppersymbol, uppersymbol ,'resizable,height=600,width=1200');
+                var container = document.getElementById(id);
+                var uppersymbol = symbol.toUpperCase();
+                container.innerHTML = uppersymbol;
+                document.getElementById('analysis').style.display = "block";
+                
+                document.forms['myForm']['symbol'].value = symbol;
+                // window.open('scoreboard.html?symbol=' + uppersymbol, uppersymbol ,'resizable,height=600,width=1200');
 }
 
 
 function cLink(myid) {
-	var sym = document.forms["myForm"]["symbol"].value;
+                var sym = document.forms["myForm"]["symbol"].value;
     var link = document.getElementById( myid );
-	var str = '';
-	var myref = '';
-	if ( sym === "" ) { 
-		alert("Please enter company symbol!");
-	} else {
-		myref = hreflookup (myid);
-		str = myref.replace ( 'AAPL', sym.toUpperCase() );
-		link.setAttribute('href', str );	
-	}
+                var str = '';
+                var myref = '';
+                if ( sym === "" ) { 
+                                alert("Please enter company symbol!");
+                } else {
+                                myref = hreflookup (myid);
+                                str = myref.replace ( 'AAPL', sym.toUpperCase() );
+                                link.setAttribute('href', str );        
+                }
     return false;
 }
 
 function hreflookup ( myid ) {
-	var hrefs = {
-		c1: 'https://finviz.com/quote.ashx?t=AAPL',
-		c2:	'https://stockcharts.com/h-sc/ui?s=AAPL&overType_2=BB&overArgs_2=20,2&indType_2=STOFULL&indArgs_2=4,3,3&chartSize=Landscape',
-		c4:	'https://snapshot.fidelity.com/fidresearch/snapshot/landing.jhtml#/research?symbol=AAPL&appCode=',
+                var hrefs = {
+                                c1: 'https://finviz.com/quote.ashx?t=AAPL',
+                                c2:          'https://stockcharts.com/h-sc/ui?s=AAPL&overType_2=BB&overArgs_2=20,2&indType_2=STOFULL&indArgs_2=4,3,3&chartSize=Landscape',
+								c3: 'https://docoh.com/user/dashboard',
+                                c4: 'https://csimarket.com/stocks/segments.php?code=AAPL',
+                                c5: 'https://finance.yahoo.com/quote/AAPL/key-statistics?p=AAPL',
+                                c6: 'https://finance.yahoo.com/quote/AAPL/holders?p=AAPL',
+								
 
-		f1:	'https://www.gurufocus.com/term/zscore/AAPL/Altman-Z-Score',
-		f2:	'https://www.gurufocus.com/term/mscore/AAPL/Beneish-M-Score',
-		f3:	'https://www.gurufocus.com/term/fscore/AAPL/Piotroski-F-Score',
-		f4:	'http://financials.morningstar.com/income-statement/is.html?t=AAPL&region=usa&culture=en-US',
-		f5:	'https://www.marketwatch.com/investing/stock/AAPL/financials#expandAllRatios',
-		f6:	'http://financials.morningstar.com/balance-sheet/bs.html?t=AAPL&region=usa&culture=en-US',
-		f7:	'https://www.marketwatch.com/investing/stock/AAPL/financials/balance-sheet',
-		f8:'http://financials.morningstar.com/cash-flow/cf.html?t=AAPL&region=usa&culture=en-US',
-		f9:'https://www.marketwatch.com/investing/stock/AAPL/financials/cash-flow',
-		f10:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#FINANCIAL STRENGTH',
-		f11:'https://csimarket.com/stocks/AAPL-Financial-Strength-Comparisons.html',
-		f12:'https://www.gurufocus.com/term/Total_Debt_Per_Share/AAPL/Total-Debt-per-Share',
-		f13:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#FINANCIAL STRENGTH',
-		f14:'https://csimarket.com/stocks/AAPL-Financial-Strength-Comparisons.html',
-		f15:'https://www.gurufocus.com/term/wacc/AAPL/WACC-Percentage',
-	
+                                f1:           'https://www.gurufocus.com/term/zscore/AAPL/Altman-Z-Score',
+                                f2:           'https://www.gurufocus.com/term/mscore/AAPL/Beneish-M-Score',
+                                f3:           'https://www.gurufocus.com/term/fscore/AAPL/Piotroski-F-Score',
+                                f4:           'http://financials.morningstar.com/income-statement/is.html?t=AAPL&region=usa&culture=en-US',
+                                f5:           'https://www.marketwatch.com/investing/stock/AAPL/financials#expandAllRatios',
+                                f6:           'http://financials.morningstar.com/balance-sheet/bs.html?t=AAPL&region=usa&culture=en-US',
+                                f7:           'https://www.marketwatch.com/investing/stock/AAPL/financials/balance-sheet',
+                                f8:'http://financials.morningstar.com/cash-flow/cf.html?t=AAPL&region=usa&culture=en-US',
+                                f9:'https://www.marketwatch.com/investing/stock/AAPL/financials/cash-flow',
+                                f10:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#FINANCIAL STRENGTH',
+                                f11:'https://csimarket.com/stocks/AAPL-Financial-Strength-Comparisons.html',
+                                f12:'https://www.gurufocus.com/term/Total_Debt_Per_Share/AAPL/Total-Debt-per-Share',
+                                f13:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#FINANCIAL STRENGTH',
+                                f14:'https://csimarket.com/stocks/AAPL-Financial-Strength-Comparisons.html',
+                                f15:'https://www.gurufocus.com/term/wacc/AAPL/WACC-Percentage',
+                
 
-		
-		p1:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#PROFITABILITY RATIOS',
-		p2:'https://csimarket.com/stocks/Profitability.php?code=AAPL',
-		p3:'https://www.gurufocus.com/term/grossmargin/AAPL/Gross-Margin-Percentage#chart_core_main',
-		p4:'https://www.gurufocus.com/term/netmargin/AAPL/Net-Margin-Percentage',
+                                
+                                p1:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#PROFITABILITY RATIOS',
+                                p2:'https://csimarket.com/stocks/Profitability.php?code=AAPL',
+                                p3:'https://www.gurufocus.com/term/grossmargin/AAPL/Gross-Margin-Percentage#chart_core_main',
+                                p4:'https://www.gurufocus.com/term/netmargin/AAPL/Net-Margin-Percentage',
 
-		
-		e1:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#MANAGEMENT EFFECTIVENESS',
-		e2:'https://csimarket.com/stocks/AAPL-Management-Effectiveness-Comparisons.html',
-		e3:'https://www.gurufocus.com/term/ROE/AAPL/ROE-Percentage',
-		e4:'http://financials.morningstar.com/ratios/r.html?t=AAPL&region=usa&culture=en-US',
-		e5:'https://www.gurufocus.com/term/ROIC/AAPL/ROIC',
-		e6:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#EFFECTIVENESS',
-		e7:'https://csimarket.com/stocks/AAPL-Efficiency-Comparisons.html',
-		
-		
-		v1:'http://financials.morningstar.com/valuation/price-ratio.html?t=AAPL&region=usa&culture=en-US#currentValuationTable',
-		v2:'https://csimarket.com/stocks/AAPL-Valuation-Comparisons.html',
-		v3:'https://www.gurufocus.com/term/pettm/AAPL/PE-Ratio',
-		v4:'https://www.gurufocus.com/term/ps/AAPL/PS-Ratio',
-		v5:'https://www.gurufocus.com/term/ev/AAPL/Enterprise-Value',
-		v6:'https://www.gurufocus.com/term/lynchvalue/AAPL/Peter-Lynch-Fair-Value',
-		
-		
-		
-		d1:'https://finviz.com/quote.ashx?t=AAPL',
-		d2:'https://www.gurufocus.com/term/per+share+eps/AAPL/Earnings-per-Share-(Diluted)',
-		d3:'https://www.gurufocus.com/term/Dividends+Per+Share/AAPL/Dividends-per-Share',
-		d4:'https://www.gurufocus.com/term/shares_basic/AAPL/Shares-Outstanding-(Basic-Average)',
-		d5:'https://www.gurufocus.com/term/CashAndCashEquivalents/AAPL/Cash-And-Cash-Equivalents',
-		d6:'https://www.gurufocus.com/term/Retained+Earnings/AAPL/Retained-Earnings',
-		d7:'https://www.gurufocus.com/term/Short-Term+Debt/AAPL/Current-Portion-of-Long-Term-Debt',
-		d8:'https://www.gurufocus.com/term/Long-Term+Debt/AAPL/Long-Term-Debt-&-Capital-Lease-Obligation',
-		d9:'https://www.nasdaq.com/symbol/AAPL/dividend-history',
-		d10:'https://www.reuters.com/finance/stocks/chart/AAPL',
-		
-		r1:'https://www.sec.gov/cgi-bin/browse-edgar?CIK=AAPL&owner=exclude&action=getcompany&Find=Search',
-		r2:'https://www.nasdaq.com/earnings/report/AAPL',
-		r3:'https://seekingalpha.com/symbol/AAPL/earnings',
-		r4:'https://www.earningswhispers.com/epsdetails/AAPL',
-		r5:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#CONSENSUS ESTIMATES',
-		r6:'https://finance.yahoo.com/quote/AAPL/analysis',
-		r7:'https://csimarket.com/stocks/at_glance.php?code=AAPL',
-		r8:'https://csimarket.com/stocks/eco.php?code=AAPL',
-		r9:'https://www.insidermonkey.com/insider-trading/purchases/',
-		r10: 'https://www.insidermonkey.com/insider-trading/sales/',
-		r11: 'https://www.gurufocus.com/yield_curve.php',
-		r12: 'https://www.bls.gov/charts/employment-situation/civilian-unemployment-rate.htm',
-		r13: 'https://www.census.gov/housing/hvs/index.html'
-	};
-	
-	return hrefs[myid];
+                                
+                                e1:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#MANAGEMENT EFFECTIVENESS',
+                                e2:'https://csimarket.com/stocks/AAPL-Management-Effectiveness-Comparisons.html',
+                                e3:'https://www.gurufocus.com/term/ROE/AAPL/ROE-Percentage',
+                                e4:'http://financials.morningstar.com/ratios/r.html?t=AAPL&region=usa&culture=en-US',
+                                e5:'https://www.gurufocus.com/term/ROIC/AAPL/ROIC',
+                                e6:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#EFFECTIVENESS',
+                                e7:'https://csimarket.com/stocks/AAPL-Efficiency-Comparisons.html',
+                                
+                                
+                                v1:'http://financials.morningstar.com/valuation/price-ratio.html?t=AAPL&region=usa&culture=en-US#currentValuationTable',
+                                v2:'https://csimarket.com/stocks/AAPL-Valuation-Comparisons.html',
+                                v3:'https://www.gurufocus.com/term/pettm/AAPL/PE-Ratio',
+                                v4:'https://www.gurufocus.com/term/ps/AAPL/PS-Ratio',
+                                v5:'https://www.gurufocus.com/term/ev/AAPL/Enterprise-Value',
+                                v6:'https://www.gurufocus.com/term/lynchvalue/AAPL/Peter-Lynch-Fair-Value',
+                                v7:'https://www.gurufocus.com/term/p2tangible_book/AAPL/Price-to-Tangible-Book',
+                                
+                                
+                                
+                                d1:'https://finviz.com/quote.ashx?t=AAPL',
+                                d2:'https://www.gurufocus.com/term/per+share+eps/AAPL/Earnings-per-Share-(Diluted)',
+                                d3:'https://www.gurufocus.com/term/Dividends+Per+Share/AAPL/Dividends-per-Share',
+                                d4:'https://www.gurufocus.com/term/shares_basic/AAPL/Shares-Outstanding-(Basic-Average)',
+                                d5:'https://www.gurufocus.com/term/CashAndCashEquivalents/AAPL/Cash-And-Cash-Equivalents',
+                                d6:'https://www.gurufocus.com/term/Retained+Earnings/AAPL/Retained-Earnings',
+                                d7:'https://www.gurufocus.com/term/Short-Term+Debt/AAPL/Current-Portion-of-Long-Term-Debt',
+                                d8:'https://www.gurufocus.com/term/Long-Term+Debt/AAPL/Long-Term-Debt-&-Capital-Lease-Obligation',
+                                d9:'https://www.nasdaq.com/symbol/AAPL/dividend-history',
+                                d10:'https://www.reuters.com/finance/stocks/chart/AAPL',
+                                
+                                r1:'https://www.sec.gov/cgi-bin/browse-edgar?CIK=AAPL&owner=exclude&action=getcompany&Find=Search',
+                                r2:'https://www.nasdaq.com/earnings/report/AAPL',
+                                r3:'https://seekingalpha.com/symbol/AAPL/earnings',
+                                r4:'https://www.earningswhispers.com/epsdetails/AAPL',
+                                r5:'https://www.reuters.com/finance/stocks/financial-highlights/AAPL#CONSENSUS ESTIMATES',
+                                r6:'https://finance.yahoo.com/quote/AAPL/analysis',
+                                r7:'https://csimarket.com/stocks/at_glance.php?code=AAPL',
+                                r8:'https://csimarket.com/stocks/eco.php?code=AAPL',
+                                r9:'https://www.insidermonkey.com/insider-trading/purchases/',
+                                r10: 'https://www.insidermonkey.com/insider-trading/sales/',
+                                r11: 'https://www.gurufocus.com/yield_curve.php',
+                                r12: 'https://www.bls.gov/charts/employment-situation/civilian-unemployment-rate.htm',
+                                r13: 'https://www.census.gov/housing/hvs/index.html'
+                };
+                
+                return hrefs[myid];
 }
 
 </script>
@@ -195,25 +200,11 @@ function hreflookup ( myid ) {
 <table>
 <tr><td>Symbol : <input type="text" name="symbol" value='AAPL' > <input type="button" onclick="ReplaceContentInContainer('companysymbol', document.forms['myForm']['symbol'].value) " value="Go">
 
-
-<div class="dropdown">
-  <button class="dropbtn">CAN SLIM</button>
-  <div class="dropdown-content">
-  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'ULTA') " >ULTA</a>
-  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'AMZN') " >AMZN</a>
-  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'NSP') " >NSP</a>
-  <a href="#" onclick="ReplaceContentInContainer('companysymbol', 'VEEV') " >VEEV</a>
-
- 
-  </div>
-</div>
-
 </td></tr>
 </table>
 <br />
 
 <div class='analysis' id='analysis'>
-
 
 <table>
 
@@ -222,24 +213,27 @@ function hreflookup ( myid ) {
 <tr><td><a href="/" id="c1" onclick="cLink(this.id);" target="finviz" >Overall Fundamentals (FinViz)</a></td><td>
 <input type="text" name="aaa" size=100>
 </td></tr>
-<tr><td><a href="/" id="r7" onclick="cLink(this.id );" target="others">Company Profile & Business Segments</a></td><td>
+<tr><td><a href="/" id="c5" onclick="cLink(this.id);" target="yahoo" >Company Stats (Yahoo)</a></td><td>
 <input type="text" name="aaa" size=100>
 </td></tr>
-<tr><td><a href="/" id="r9" onclick="cLink(this.id );" target="others">Insiders, Institution Holders, and Hedge Funds</a></td><td>
+<tr><td><a href="/" id="c3" onclick="cLink(this.id );" target="stockchart2">Company Profile</a></td><td>
+<input type="text" name="rsi2" value='tanloan8888 wealthytan1!' size=100>
+</td></tr>
+<tr><td><a href="/" id="c6" onclick="cLink(this.id);" target="yahoo" >Major Holders (Yahoo)</a></td><td>
 <input type="text" name="aaa" size=100>
+</td></tr>
+<tr><td><a href="/" id="c4" onclick="cLink(this.id );" target="csi">Business Segments</a></td><td>
+<input type="text" name="rsi2" size=100>
 </td></tr>
 
-<tr><td class='subheader' colspan='2'><center>Market Charts</center></td></tr>
-<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$INDU' target="indexchart">Dow Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
-<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$SPX' target="indexchart">S&P Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
-<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$COMPQ' target="indexchart">NASDAQ Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
-<tr><td><a href='https://finance.yahoo.com/' target="indexchart">US Future and Stock Markets</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href="/" id="r1" onclick="cLink(this.id );" target="others">SEC Filings</a></td><td><input type="text" name="aaa" size=100></td></tr>
 
 <tr><td class='subheader' colspan='2'><center>Technical Analysis</center></td></tr>
 <tr><td><a href="/" id="c2" onclick="cLink(this.id );" target="stockchart">Chart with Volume</a></td><td>
-
 <input type="text" name="rsi2" size=100>
 </td></tr>
+
+
 
 </table>
 
@@ -336,6 +330,13 @@ function hreflookup ( myid ) {
 <input type="radio" name="v6" value="1"><font color='green'>Good</font>
 <input type="radio" name="v6" value="0"><font color='blue'>Neutral</font>
 <input type="radio" name="v6" value="-1"><font color='red'>Poor</font>
+<input type="text" name="aaa" size=100>
+</td></tr>
+
+<tr><td><a href="/" id="v7" onclick="cLink(this.id );" target="guru"> Price-to-Tangible-Book </a></td><td>
+<input type="radio" name="v7" value="1"><font color='green'>Good</font>
+<input type="radio" name="v7" value="0"><font color='blue'>Neutral</font>
+<input type="radio" name="v7" value="-1"><font color='red'>Poor</font>
 <input type="text" name="aaa" size=100>
 </td></tr>
 
@@ -440,13 +441,26 @@ function hreflookup ( myid ) {
 <br />
 <table>
 <tr><th colspan='2'>Resources</th></tr>
-<tr><td><a href="/" id="r1" onclick="cLink(this.id );" target="others">SEC Filings</a></td><td><input type="text" name="aaa" size=100></td></tr>
 
+<tr><td class='subheader' colspan='2'><center>Market Charts</center></td></tr>
+<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$INDU' target="indexchart">Dow Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$SPX' target="indexchart">S&P Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href='https://stockcharts.com/h-sc/ui?s=$COMPQ' target="indexchart">NASDAQ Chart</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href='https://finance.yahoo.com/' target="indexchart">US Future and Stock Markets</a></td><td><input type="text" name="aaa" size=100></td></tr>
+
+
+<tr><td class='subheader' colspan='2'><center> Misc. Resources</center></td></tr>
 <tr><td><a href="/" id="r8" onclick="cLink(this.id );" target="others">Economic Indicators</a></td><td><input type="text" name="aaa" size=100></td></tr>
 <tr><td><a href="/" id="r2" onclick="cLink(this.id );" target="others">Earnings Surprise</a></td><td><input type="text" name="aaa" size=100></td></tr>
 <tr><td><a href="/" id="r3" onclick="cLink(this.id );" target="others">Earning Revisions</a></td><td><input type="text" name="aaa" size=100></td></tr>
 <tr><td><a href="/" id="r4" onclick="cLink(this.id );" target="others">Expectations and Guidances</a></td><td><input type="text" name="aaa" size=100></td></tr>
 <tr><td><a href="/" id="r6" onclick="cLink(this.id );" target="yahoo">Yahoo Estimates</a></td><td><input type="text" name="aaa" size=100></td></tr>
+<tr><td><a href="/" id="r7" onclick="cLink(this.id );" target="others">Company Profile & Business Segments</a></td><td>
+<input type="text" name="aaa" size=100>
+</td></tr>
+<tr><td><a href="/" id="r9" onclick="cLink(this.id );" target="others">Insiders, Institution Holders, and Hedge Funds</a></td><td>
+<input type="text" name="aaa" size=100>
+</td></tr>
 
 <tr><td class='subheader' colspan='2'><center>Economic Indicators</center></td></tr>
 <tr><td><a href='https://www.aaii.com/sentimentsurvey' target="indexchart">Equity Market Sentiment</a></td><td><input type="text" name="aaa" size=100></td></tr>
@@ -486,5 +500,4 @@ function hreflookup ( myid ) {
 
 </body>
 </html>
-
 
